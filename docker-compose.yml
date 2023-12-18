@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  # Container definition for the devcontainer
+  devcontainer:
+    build:
+      context: .
+      target: dev
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/workspaces/fastapi_demo/
+
+  # Container definition for running the FastAPI app in production
+  app:
+    build:
+      context: .
+      target: app
+    tty: true
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    volumes:
+      - .:/workspaces/fastapi_demo/
+    command: ["serve", "--dev"]
+
+networks:
+  default:
+    name: fastapi_demo-network
