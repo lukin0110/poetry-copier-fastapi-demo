@@ -24,16 +24,16 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
     apt-get update && apt-get install --no-install-recommends --yes curl build-essential
 
 # Create and activate a virtual environment.
-RUN python -m venv /opt/fastapi_demo-env
-ENV PATH /opt/fastapi_demo-env/bin:$PATH
-ENV VIRTUAL_ENV /opt/fastapi_demo-env
+RUN python -m venv /opt/marty_mcfly-env
+ENV PATH /opt/marty_mcfly-env/bin:$PATH
+ENV VIRTUAL_ENV /opt/marty_mcfly-env
 
 # Set the working directory.
-WORKDIR /workspaces/fastapi_demo/
+WORKDIR /workspaces/marty_mcfly/
 
 # Touch minimal files to allow Poetry to install dependencies.
 RUN mkdir -p /root/.cache/pypoetry/ && mkdir -p /root/.config/pypoetry/ && \
-    mkdir -p src/fastapi_demo/ && touch src/fastapi_demo/__init__.py && touch README.md
+    mkdir -p src/marty_mcfly/ && touch src/marty_mcfly/__init__.py && touch README.md
 
 
 
@@ -57,12 +57,12 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
     git config --system --add safe.directory '*'
 
 # Install the run time Python dependencies in the virtual environment.
-COPY poetry.lock* pyproject.toml /workspaces/fastapi_demo/
+COPY poetry.lock* pyproject.toml /workspaces/marty_mcfly/
 RUN --mount=type=cache,target=/root/.cache/pypoetry/ \
     poetry install --no-interaction --no-ansi
 
 # Install pre-commit hooks & activate starship.
-COPY .pre-commit-config.yaml /workspaces/fastapi_demo/
+COPY .pre-commit-config.yaml /workspaces/marty_mcfly/
 RUN git init && pre-commit install --install-hooks && \
     echo 'eval "$(starship init zsh)"' >> ~/.zshrc && \
     echo 'poe --help' >> ~/.zshrc && \
@@ -75,14 +75,14 @@ CMD ["zsh"]
 FROM base AS app
 
 # Install the run time Python dependencies in the virtual environment.
-COPY poetry.lock* pyproject.toml /workspaces/fastapi_demo/
+COPY poetry.lock* pyproject.toml /workspaces/marty_mcfly/
 RUN --mount=type=cache,target=/root/.cache/pypoetry/ \
     poetry install --only main --no-interaction --no-ansi
 
 # Copy the package source code.
 COPY . .
 
-ENTRYPOINT ["/opt/fastapi_demo-env/bin/poe"]
+ENTRYPOINT ["/opt/marty_mcfly-env/bin/poe"]
 CMD ["serve"]
 
 # Provide build information as environment variables.

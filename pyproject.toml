@@ -1,5 +1,5 @@
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
-name = "fastapi_demo"
+name = "marty_mcfly"
 version = "0.0.0"
 description = "An example of a FastAPI app that was scaffolded with Poetry Copier"
 authors = []
@@ -73,7 +73,7 @@ warn_required_dynamic_aliases = true
 warn_untyped_fields = true
 
 [tool.pytest.ini_options]  # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
-addopts = "--color=yes --doctest-modules --exitfirst --failed-first --strict-config --strict-markers --typeguard-packages=fastapi_demo --verbosity=2 --junitxml=reports/pytest.xml"
+addopts = "--color=yes --doctest-modules --exitfirst --failed-first --strict-config --strict-markers --typeguard-packages=marty_mcfly --verbosity=2 --junitxml=reports/pytest.xml"
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 testpaths = ["src", "tests"]
 xfail_strict = true
@@ -157,7 +157,7 @@ convention = "numpy"
           --use-colors \
           --reload \
           --factory \
-          fastapi_demo.app:create_app
+          marty_mcfly.app:create_app
     } else {
         uvicorn \
           --host $host \
@@ -167,7 +167,7 @@ convention = "numpy"
           --timeout-graceful-shutdown 10 \
           --timeout-keep-alive 10 \
           --factory \
-          fastapi_demo.app:create_app
+          marty_mcfly.app:create_app
     } fi
     """
 

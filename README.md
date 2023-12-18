@@ -1,4 +1,4 @@
-# FastAPI Demo
+# Marty McFly
 
 An example of a FastAPI app that was scaffolded with Poetry Copier.
 
@@ -87,3 +87,7 @@ docker compose run devcontainer
 3. `make lock`
 4. `make shell`
 </details>
+
+---
+️⚡️ Scaffolded with [Poetry Copier](https://github.com/lukin0110/poetry-copier/)\
+🛠️ [Open an issue](https://github.com/lukin0110/poetry-copier/issues/new) if you have any questions or suggestions.

@@ -1,4 +1,4 @@
-"""FastAPI Demo."""
+"""Marty McFly."""
 
 from fastapi import FastAPI
 
@@ -6,7 +6,7 @@ from fastapi import FastAPI
 def create_app() -> FastAPI:
     """Create app."""
     app = FastAPI(
-        title="FastAPI Demo",
+        title="Marty McFly",
         description="An example of a FastAPI app that was scaffolded with Poetry Copier",
     )
 
