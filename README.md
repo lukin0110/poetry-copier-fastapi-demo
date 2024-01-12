@@ -1,3 +1,5 @@
+[![Lint and Test](https://github.com/lukin0110/poetry-copier-fastapi-demo/actions/workflows/test.yml/badge.svg)](https://github.com/lukin0110/poetry-copier-fastapi-demo/actions)
+
 # Marty McFly
 
 An example of a FastAPI app that was scaffolded with Poetry Copier.
