@@ -146,6 +146,7 @@ convention = "numpy"
     [[tool.poe.tasks.test.sequence]]
     cmd = "coverage xml"
 
+
     [tool.poe.tasks.serve]  # https://www.uvicorn.org/settings/
     help = "Serve a REST API in production"
     shell = """
